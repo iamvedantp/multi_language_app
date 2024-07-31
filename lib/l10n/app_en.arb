@@ -1,4 +1,4 @@
 {
-    "helloWorld!" : "Hello World!"
-    "@helloWorld" : "This is programmers Gretting."
+    "helloWorld" : "Hello World!",
+    "@helloWorld" : {"Description": "Greetings to programmers"}
 }
