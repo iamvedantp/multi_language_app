@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('en'),
         Locale('hi'),
-        Locale('es'),
+        Locale('mr'),
       ],
       locale: context
           .watch<LanguageProvider>()
