@@ -18,10 +18,6 @@ class LoginPage extends StatelessWidget {
           AppLocalizations.of(context)!.signIn,
           style: const TextStyle(color: Colors.white),
         ),
-        leading: const Icon(
-          Icons.keyboard_backspace_sharp,
-          color: Colors.white,
-        ),
         actions: [
           DropdownMenu(
             textStyle: const TextStyle(color: Colors.white),

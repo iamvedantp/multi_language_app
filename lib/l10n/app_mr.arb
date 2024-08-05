@@ -1,0 +1,15 @@
+{
+    "helloWorld" : "हॅलो वर्ल्ड!" ,
+    "counterMsg": "तुम्ही अनेक वेळा बटण दाबले आहे:",
+    "signIn" :"साइन इन करा",
+    "heading" :"हॉटस्टार",
+    "emailHint" :"ईमेल किंवा फोन नंबर",
+    "passHint" : "पासवर्ड",
+     "forgotPass" :"पासवर्ड विसरलात?",
+      "loginBtn" : "लॉग इन",
+      "txtNoAcc" :"खाते नाही?",
+      "txtSignUp" :"यासह साइन अप करा",
+      "google" :"गुगल",
+      "facebook" : "फेसबुक",
+      "twitter" : "ट्विटर"
+}
