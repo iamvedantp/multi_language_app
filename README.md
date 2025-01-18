@@ -2,7 +2,7 @@
 
 A simple Flutter application demonstrating multi-language support using the `provider` and `shared_preferences` packages.
 
-![mla2-imageonline co-merged](https://github.com/user-attachments/assets/8e8d31d0-ea45-4131-93a6-c33bfc90cb98)
+![Hotstar_App](https://github.com/user-attachments/assets/35495026-3cd2-47a0-b2b3-4af48ccb2921)
 
 
 
