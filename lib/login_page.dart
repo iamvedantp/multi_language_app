@@ -15,28 +15,35 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.black,
         centerTitle: false,
         title: Text(
-          AppLocalizations.of(context)!.signIn, // Localized sign-in text
+          AppLocalizations.of(context)!.signIn,
           style: const TextStyle(color: Colors.white),
         ),
         actions: [
-          DropdownMenu(
-            textStyle: const TextStyle(color: Colors.white),
-            initialSelection: Text(
-              context
-                  .watch<LanguageProvider>()
-                  .selectedLocale
-                  .languageCode, // Get current language code
-              style: const TextStyle(color: Colors.white),
-            ),
-            onSelected: (value) {
-              context.read<LanguageProvider>().changeLanguage(
-                  value as String); // Change language on selection
+          DropdownButton<String>(
+            // Specify the type <String>
+            dropdownColor: Colors.black,
+            style: const TextStyle(color: Colors.white),
+            iconEnabledColor: Colors.white,
+            items: LanguageProvider.languages.map((language) {
+              return DropdownMenuItem<String>(
+                // Specify the type <String>
+                value: language['locale'],
+                child: Text(
+                  language['name'],
+                  style: const TextStyle(color: Colors.white),
+                ),
+              );
+            }).toList(),
+            onChanged: (String? value) {
+              // Specify the type String?
+              if (value != null) {
+                context.read<LanguageProvider>().changeLanguage(value);
+              }
             },
-            dropdownMenuEntries: LanguageProvider.languages
-                .map((language) => DropdownMenuEntry(
-                    value: language['locale'],
-                    label: language['name'])) // Language options
-                .toList(),
+            value: context
+                .watch<LanguageProvider>()
+                .selectedLocale
+                .languageCode, // Access languageCode directly
           )
         ],
       ),
@@ -46,7 +53,7 @@ class LoginPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              AppLocalizations.of(context)!.heading, // Localized heading
+              AppLocalizations.of(context)!.heading,
               style: const TextStyle(
                   fontSize: 47,
                   color: Colors.white,
@@ -57,21 +64,20 @@ class LoginPage extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
+                      borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          width: 0.5, color: Colors.white.withOpacity(0.3))),
+                          width: 0.5, color: Colors.white.withAlpha(128))),
                   child: Column(
                     children: [
                       TextField(
                         decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.account_circle_outlined,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withAlpha(128),
                           ),
-                          hintText: AppLocalizations.of(context)!
-                              .emailHint, // Localized email hint
+                          hintText: AppLocalizations.of(context)!.emailHint,
                           hintStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.4)),
+                              TextStyle(color: Colors.white.withAlpha(102)),
                           fillColor: Colors.transparent,
                           filled: true,
                           border: InputBorder.none,
@@ -83,13 +89,12 @@ class LoginPage extends StatelessWidget {
                         decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.lock_open_outlined,
-                            color: Colors.white.withOpacity(0.5),
+                            color: Colors.white.withAlpha(128),
                           ),
-                          hintText: AppLocalizations.of(context)!
-                              .passHint, // Localized password hint
-                          fillColor: Colors.transparent,
+                          hintText: AppLocalizations.of(context)!.passHint,
                           hintStyle:
-                              TextStyle(color: Colors.white.withOpacity(0.4)),
+                              TextStyle(color: Colors.white.withAlpha(102)),
+                          fillColor: Colors.transparent,
                           filled: true,
                           border: InputBorder.none,
                           enabledBorder: InputBorder.none,
@@ -99,14 +104,11 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(
-                  height: 10, // Decreased the height
-                ),
+                const SizedBox(height: 15),
                 Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    AppLocalizations.of(context)!
-                        .forgotPass, // Localized forgot password text
+                    AppLocalizations.of(context)!.forgotPass,
                     style: const TextStyle(
                         fontSize: 13,
                         color: Colors.white,
@@ -120,25 +122,22 @@ class LoginPage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 40),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5)),
+                      borderRadius: BorderRadius.circular(67)),
                   backgroundColor: const Color(0xff1FA047),
                   foregroundColor: Colors.white),
-              child: Text(AppLocalizations.of(context)!
-                  .loginBtn), // Localized login button text
+              child: Text(AppLocalizations.of(context)!.loginBtn),
             ),
             Column(
               children: [
                 Text(
-                  AppLocalizations.of(context)!
-                      .txtNoAcc, // Localized text for no account
+                  AppLocalizations.of(context)!.txtNoAcc,
                   style: const TextStyle(
                       fontSize: 15,
                       color: Colors.white,
                       fontWeight: FontWeight.w900),
                 ),
                 Text(
-                  AppLocalizations.of(context)!
-                      .txtSignUp, // Localized sign-up text
+                  AppLocalizations.of(context)!.txtSignUp,
                   style: const TextStyle(
                       fontSize: 14,
                       color: Colors.grey,
@@ -146,33 +145,29 @@ class LoginPage extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(
-                height: 5), // Decreased the height between the text and buttons
+            const SizedBox(height: 5),
             Row(
               children: [
                 Expanded(
                   child: myBtn(
                     mIcon: FontAwesomeIcons.googlePlus,
-                    Title: AppLocalizations.of(context)!
-                        .google, // Localized Google text
+                    Title: AppLocalizations.of(context)!.google,
                     mColor: Colors.red,
                   ),
                 ),
-                const SizedBox(width: 2),
+                const SizedBox(width: 5),
                 Expanded(
                   child: myBtn(
                     mIcon: FontAwesomeIcons.facebook,
-                    Title: AppLocalizations.of(context)!
-                        .facebook, // Localized Facebook text
+                    Title: AppLocalizations.of(context)!.facebook,
                     mColor: Colors.blue,
                   ),
                 ),
-                const SizedBox(width: 2),
+                const SizedBox(width: 5),
                 Expanded(
                   child: myBtn(
                     mIcon: FontAwesomeIcons.twitter,
-                    Title: AppLocalizations.of(context)!
-                        .twitter, // Localized Twitter text
+                    Title: AppLocalizations.of(context)!.twitter,
                     mColor: Colors.cyan,
                   ),
                 ),
@@ -196,7 +191,7 @@ Widget myBtn(
       minimumSize: const Size(double.infinity, 50),
       padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 6),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(50),
       ),
     ),
   );

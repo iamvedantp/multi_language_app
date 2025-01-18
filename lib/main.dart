@@ -54,14 +54,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++; // Increment the counter
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,23 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
         title:
             Text(AppLocalizations.of(context)!.helloWorld), // Localized title
       ),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(AppLocalizations.of(context)!
-                .counterMsg), // Localized counter message
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+            // Text(AppLocalizations.of(context)!
+            //     .counterMsg), // Localized counter message
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter, // Increment counter on button press
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
